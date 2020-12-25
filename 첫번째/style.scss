@@ -1,3 +1,38 @@
+$nav-padding : 4rem;
+
+
+
+$sec0-color :#FF9A11;
+
+//모바일
+@mixin mobile {
+    @media (min-width:0px) and (max-width:600px) {
+        // @media screen and ( min-width:0px){    
+        @content;
+    }
+}
+
+// 타블렛PC
+@mixin tablet {
+    @media (min-width:601px) and (max-width:1180px) {
+        /* 타블렛PC */
+        // @media screen and ( min-width:601px) {  /* 타블렛PC */
+        @content;
+    }
+}
+
+@mixin mobile_table {
+    @media (min-width:0px) and (max-width : 1180px) {
+        @content;
+    }
+}
+
+// 데스크탑
+@mixin desktop {
+    @media (min-width:1180px) {
+        @content;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -5,36 +40,91 @@
     margin: 0;
 }
 
-body{
+html {
+
+    font-size: 20px;
+}
+
+body {
     width: 100vw;
     height: 100vh;
+
+}
+
+button,
+a,
+li {
+    all: unset;
+    color: black;
+}
+
+a , button{
+    cursor: pointer;
+
+}
+
+
+nav {
+    width: 100%;
+    height: $nav-padding;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    .brand {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+
+        .link {
+            margin: 0 10px;
+        }
+    }
+
 }
 
 // 스와이프
-.swiper-container{
+.swiper-container {
     width: 100%;
     height: 100%;
 
-    .swiper-wrapper{
+
+    .swiper-wrapper {
         width: 100%;
         height: 100%;
 
-        .swiper-slide{
+        .swiper-slide {
             width: 100%;
             height: 100%;
-            &:nth-last-child(1){
+            padding-top: $nav-padding;
+
+            &:nth-last-child(1) {
                 height: 400px !important;
+                padding-top: 0;
             }
         }
     }
 
-    .swiper-pagination{
+    .swiper-pagination {
         left: 10px;
         top: 50%;
         right: 0;
         text-align: left;
 
-        .swiper-pagination-bullet{
+        .swiper-pagination-bullet {
             width: 10px;
             height: 10px;
             margin: 20px 0;
@@ -42,24 +132,129 @@ body{
             opacity: 1;
             background-color: rgba($color:black, $alpha: 0.2);
             outline: none !important;
-            p{
+
+            p {
                 display: none;
                 width: 80vw;
                 margin-left: 25px;
 
 
             }
-            &.swiper-pagination-bullet-active{
+
+            &.swiper-pagination-bullet-active {
                 background-color: yellow;
                 width: 20px;
                 height: 20px;
                 transform: translateX(-5px);
             }
-            &:hover{
-                p{
+
+            &:hover {
+                p {
                     display: inline-block;
                 }
             }
+        }
+    }
+}
+.container{
+    max-width: 1800px;
+    margin: auto;
+}
+
+// sec0
+.sec0 {
+    display: grid;
+    padding: 5rem;
+    grid-template:
+        "sec0_title sec0_title . ."2fr 
+        "sec0_line sec0_disc_main sec0_img sec0_img"2fr 
+        "sec0_line sec0_disc_sub sec0_img sec0_img"4fr 
+        "sec0_more sec0_video . ."50px / 1fr 2fr 2fr 2fr;
+    overflow: hidden;
+    text-align: center;
+    gap: 0.5rem;
+
+    .sec0_title {
+        grid-area: sec0_title;
+        font-size: 3rem;
+        color: $sec0-color;
+        font-weight: bolder;
+    }
+
+    .sec0_disc_main {
+        grid-area: sec0_disc_main;
+        text-align: left;
+    }
+
+    .sec0_disc_sub {
+        grid-area: sec0_disc_sub;
+        font-size: 0.8rem;
+        text-align: left;
+        word-break: keep-all;
+    }
+
+    .sec0_img {
+        grid-area: sec0_img;
+        width: 100%;
+        height: 100%;
+        background: url("../images/bicycle-5013316_1920.jpg") center/cover no-repeat;
+    }
+
+    .sec0_more {
+        grid-area: sec0_more;
+        border-radius: 4rem;
+        background-color: $sec0-color;
+        color: white;
+    }
+
+    .sec0_video {
+        grid-area: sec0_video;
+        color: $sec0-color;
+    }
+
+    .sec0_line {
+        height: 95%;
+        grid-area: sec0_line;
+        border-right: 1px solid black;
+        transform: translateX(-50%);
+    }
+    @include mobile(){
+        grid-template: 
+        "sec0_title sec0_title sec0_title sec0_title" 1fr
+        ". sec0_disc_main sec0_disc_main ." 1fr 
+        "sec0_disc_sub sec0_disc_sub sec0_disc_sub sec0_disc_sub" 1fr
+        ". sec0_more sec0_video ." 50px
+        ". sec0_img sec0_img ." 250px
+        / 1fr 3fr 3fr 1fr;
+
+        padding: 2rem;
+        .sec0_title{
+            font-size: 2rem;
+
+        }
+
+        .sec0_line{
+            display: none;
+        }
+        .sec0_disc_main , .sec0_disc_sub , .sec0_title{
+            text-align: center;
+        }
+    }
+    @include tablet(){
+        grid-template: 
+        "sec0_title sec0_title sec0_title sec0_title" 1fr
+        ". sec0_disc_main sec0_disc_main ." 1fr 
+        "sec0_disc_sub sec0_disc_sub sec0_disc_sub sec0_disc_sub" 1fr
+        ". sec0_more sec0_video ." 50px
+        ". sec0_img sec0_img ." 300px
+        / 1fr 2fr 2fr 1fr;
+        
+        .sec0_title{
+            font-size: 2rem;
+        }
+        .sec0_disc_main , .sec0_disc_sub , .sec0_title{
+            text-align: center;
+        
         }
     }
 }
