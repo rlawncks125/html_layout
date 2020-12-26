@@ -47,7 +47,7 @@ const sec1Option = {
     // effect: 'slide',
     speed : 1000,
     breakpoints : {
-        1180 :{
+        1300 :{
             slidesPerView: 5,
         }
     },

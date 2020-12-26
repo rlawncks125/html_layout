@@ -16,10 +16,16 @@ html {
   }
 }
 
-@media (min-width: 641px) and (max-width: 1180px) {
+@media (min-width: 641px) and (max-width: 1300px) {
   html {
     /* 타블렛PC */
     font-size: 20px;
+  }
+}
+
+@media (min-width: 1301px) {
+  html {
+    font-size: 26px;
   }
 }
 
@@ -113,14 +119,14 @@ nav .links .link {
   padding-top: 0;
 }
 
-@media (min-width: 641px) and (max-width: 1180px) {
+@media (min-width: 641px) and (max-width: 1300px) {
   .swiper-main .swiper-wrapper .swiper-slide.footer {
     /* 타블렛PC */
     height: 400px;
   }
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1301px) {
   .swiper-main .swiper-wrapper .swiper-slide.footer {
     height: 400px;
   }
@@ -233,7 +239,7 @@ nav .links .link {
   }
 }
 
-@media (min-width: 641px) and (max-width: 1180px) {
+@media (min-width: 641px) and (max-width: 1300px) {
   .sec0 {
     /* 타블렛PC */
     grid-template: "sec0_title sec0_title sec0_title sec0_title" 1fr ". sec0_disc_main sec0_disc_main ." 1fr  "sec0_disc_sub sec0_disc_sub sec0_disc_sub sec0_disc_sub" 1fr ". sec0_more sec0_video ." 50px ". sec0_img sec0_img ." 3fr / 1fr 2fr 2fr 1fr;
@@ -243,7 +249,7 @@ nav .links .link {
   }
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1301px) {
   .sec0 {
     grid-template: "sec0_title sec0_title . ." 2fr "sec0_line sec0_disc_main sec0_img sec0_img" 2fr "sec0_line sec0_disc_sub sec0_img sec0_img" 4fr "sec0_more sec0_video . ." 50px/1fr 2fr 2fr 2fr;
     overflow: hidden;
@@ -337,7 +343,7 @@ nav .links .link {
   }
 }
 
-@media (min-width: 641px) and (max-width: 1180px) {
+@media (min-width: 641px) and (max-width: 1300px) {
   .sec1 {
     /* 타블렛PC */
   }
@@ -363,7 +369,7 @@ nav .links .link {
   }
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1301px) {
   .sec1 .sec1_container {
     height: 100%;
     width: 100%;
@@ -397,4 +403,3 @@ nav .links .link {
     font-size: 4rem;
   }
 }
-/*# sourceMappingURL=style.css.map */

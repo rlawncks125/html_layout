@@ -4,10 +4,12 @@ $nav-padding : 4rem;
 
 $sec0-color :#FF9A11;
 
+$screen-desktop : 1300px;
+$screen-tablet : 640px;
 
 //모바일
 @mixin mobile {
-    @media (min-width:0px) and (max-width:640px) {
+    @media (min-width:0px) and (max-width: $screen-tablet) {
         // @media screen and ( min-width:0px){    
         @content;
     }
@@ -15,7 +17,7 @@ $sec0-color :#FF9A11;
 
 // 타블렛PC
 @mixin tablet {
-    @media (min-width:641px) and (max-width:1180px) {
+    @media (min-width:$screen-tablet + 1px) and (max-width:$screen-desktop) {
         /* 타블렛PC */
         // @media screen and ( min-width:601px) {  /* 타블렛PC */
         @content;
@@ -23,14 +25,14 @@ $sec0-color :#FF9A11;
 }
 
 @mixin mobile_table {
-    @media (min-width:0px) and (max-width : 1180px) {
+    @media (min-width:0px) and (max-width : $screen-desktop) {
         @content;
     }
 }
 
 // 데스크탑
 @mixin desktop {
-    @media (min-width:1180px) {
+    @media (min-width:$screen-desktop + 1px) {
         @content;
     }
 }
@@ -50,6 +52,9 @@ html {
     }
     @include tablet(){
         font-size: 20px;
+    }
+    @include desktop(){
+        font-size: 26px;
     }
 }
 
