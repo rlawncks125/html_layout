@@ -4,9 +4,10 @@ $nav-padding : 4rem;
 
 $sec0-color :#FF9A11;
 
+
 //모바일
 @mixin mobile {
-    @media (min-width:0px) and (max-width:600px) {
+    @media (min-width:0px) and (max-width:640px) {
         // @media screen and ( min-width:0px){    
         @content;
     }
@@ -14,7 +15,7 @@ $sec0-color :#FF9A11;
 
 // 타블렛PC
 @mixin tablet {
-    @media (min-width:601px) and (max-width:1180px) {
+    @media (min-width:641px) and (max-width:1180px) {
         /* 타블렛PC */
         // @media screen and ( min-width:601px) {  /* 타블렛PC */
         @content;
@@ -42,7 +43,14 @@ $sec0-color :#FF9A11;
 
 html {
 
-    font-size: 20px;
+    font-size: 24px;
+
+    @include mobile(){
+        font-size: 14px;
+    }
+    @include tablet(){
+        font-size: 20px;
+    }
 }
 
 body {
@@ -95,9 +103,13 @@ nav {
     }
 
 }
+.container{
+    max-width: 1800px;
+    margin: auto;
+}
 
 // 스와이프
-.swiper-container {
+.swiper-main {
     width: 100%;
     height: 100%;
 
@@ -110,15 +122,23 @@ nav {
             width: 100%;
             height: 100%;
             padding-top: $nav-padding;
-
-            &:nth-last-child(1) {
-                height: 400px !important;
+            @include mobile(){
+                height: auto;
+            }
+            &.footer {
+                @include tablet(){
+                    height: 400px ;
+                }
+                @include desktop(){
+                    height: 400px ;
+                }
                 padding-top: 0;
             }
         }
     }
 
     .swiper-pagination {
+        width: 50px;
         left: 10px;
         top: 50%;
         right: 0;
@@ -137,12 +157,10 @@ nav {
                 display: none;
                 width: 80vw;
                 margin-left: 25px;
-
-
             }
 
             &.swiper-pagination-bullet-active {
-                background-color: yellow;
+                background-color: $sec0-color;
                 width: 20px;
                 height: 20px;
                 transform: translateX(-5px);
@@ -153,43 +171,37 @@ nav {
                     display: inline-block;
                 }
             }
+            
+        }
+        @include mobile(){
+            display: none;
         }
     }
 }
-.container{
-    max-width: 1800px;
-    margin: auto;
-}
+
 
 // sec0
 .sec0 {
     display: grid;
-    padding: 5rem;
-    grid-template:
-        "sec0_title sec0_title . ."2fr 
-        "sec0_line sec0_disc_main sec0_img sec0_img"2fr 
-        "sec0_line sec0_disc_sub sec0_img sec0_img"4fr 
-        "sec0_more sec0_video . ."50px / 1fr 2fr 2fr 2fr;
-    overflow: hidden;
+    padding: 3rem;
+    gap: 0.3rem;
+    padding-top: $nav-padding;
     text-align: center;
-    gap: 0.5rem;
-
     .sec0_title {
         grid-area: sec0_title;
         font-size: 3rem;
         color: $sec0-color;
         font-weight: bolder;
+
     }
 
     .sec0_disc_main {
         grid-area: sec0_disc_main;
-        text-align: left;
     }
 
     .sec0_disc_sub {
         grid-area: sec0_disc_sub;
         font-size: 0.8rem;
-        text-align: left;
         word-break: keep-all;
     }
 
@@ -224,10 +236,9 @@ nav {
         ". sec0_disc_main sec0_disc_main ." 1fr 
         "sec0_disc_sub sec0_disc_sub sec0_disc_sub sec0_disc_sub" 1fr
         ". sec0_more sec0_video ." 50px
-        ". sec0_img sec0_img ." 250px
+        ". sec0_img sec0_img ." 200px
         / 1fr 3fr 3fr 1fr;
 
-        padding: 2rem;
         .sec0_title{
             font-size: 2rem;
 
@@ -236,9 +247,7 @@ nav {
         .sec0_line{
             display: none;
         }
-        .sec0_disc_main , .sec0_disc_sub , .sec0_title{
-            text-align: center;
-        }
+  
     }
     @include tablet(){
         grid-template: 
@@ -246,15 +255,171 @@ nav {
         ". sec0_disc_main sec0_disc_main ." 1fr 
         "sec0_disc_sub sec0_disc_sub sec0_disc_sub sec0_disc_sub" 1fr
         ". sec0_more sec0_video ." 50px
-        ". sec0_img sec0_img ." 300px
+        ". sec0_img sec0_img ." 3fr
         / 1fr 2fr 2fr 1fr;
         
+
         .sec0_title{
             font-size: 2rem;
         }
-        .sec0_disc_main , .sec0_disc_sub , .sec0_title{
-            text-align: center;
-        
+  
+    }
+    @include desktop(){
+        grid-template:
+        "sec0_title sec0_title . ."2fr 
+        "sec0_line sec0_disc_main sec0_img sec0_img"2fr 
+        "sec0_line sec0_disc_sub sec0_img sec0_img"4fr 
+        "sec0_more sec0_video . ."50px / 1fr 2fr 2fr 2fr;
+        overflow: hidden;
+        text-align: center;
+        .sec0_title{
+            align-self: flex-end;
+            text-align: left;
+            justify-self: left;
+        }
+        .sec0_disc_main{
+            align-self: flex-end;
+            text-align: left;
+        }
+        .sec0_disc_sub{
+            text-align: left;
+        }
+    }
+}
+
+// sec1
+.sec1{
+    .sec1_container{
+        height: 100%;
+        width: 100%;
+
+        .swiper-wrapper{
+            width: 100%;
+            height: 100%;
+
+            .swiper-slide{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 4rem;
+                text-align: center;
+                .sec1-wrap{
+                    width: 100%;
+                    height: 100%;
+                    margin: auto;
+                    img{
+                        display: block;
+                        width: 60%;
+                        height: 40%;
+                        margin: auto;
+                    } 
+                    p{
+                        margin: 1rem 0;
+                    }
+                    span{              
+                        word-break: keep-all;
+                        font-size: 0.6rem;
+                        color: gray;
+                    }
+                }
+               
+            }
+        }
+        .swiper-button-next{
+            right: 40px;
+        }
+        .swiper-button-prev{
+            left: 60px;
+        }
+    }
+    @include mobile(){
+        .sec1_container{
+            .swiper-button-next{
+                right: 20px;
+            }
+            .swiper-button-prev{
+                left: 20px;
+            }
+            .swiper-wrapper{
+                .swiper-slide{
+                    .sec1-wrap{
+                        p{
+                            font-size: 1.3rem;
+                        }
+                        span{
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include tablet(){
+        .sec1_container{
+            .swiper-wrapper {
+                .swiper-slide { 
+                    padding: 2rem 5rem;
+                    .sec1-wrap{
+                        background-color: yellowgreen;
+                        border-radius: 20px;  
+                        padding: 2rem;
+                        p{
+                            font-size: 1.5rem;
+                        }
+                        span{
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+            }
+            .swiper-button-next{
+                right: 60px;
+            }
+            .swiper-button-prev{
+                left: 60px;
+            }
+        }
+    }
+
+    @include desktop() {
+        .sec1_container {
+            height: 100%;
+            width: 100%;
+            padding: 1rem 4rem;  
+            .swiper-wrapper {
+                .swiper-slide {   
+                    padding: 1rem;
+                    max-height: 850px;
+                    background-color: transparent;
+                    margin: auto;
+                    border-radius: 20px;  
+                    transition: background-color 300ms ease-out ;
+                    &:hover{
+                        background-color: rgb(202, 201, 201);
+                    }
+                }
+            }
+
+            .swiper-button-next {
+                display: none;
+            }
+
+            .swiper-button-prev {
+                display: none;
+            }
+            .swiper-slide-duplicate{
+                display: none !important;
+            }
+        }
+    }
+}
+
+
+// footer
+.footer{
+    @include mobile(){
+        .box{
+            font-size: 4rem;
         }
     }
 }

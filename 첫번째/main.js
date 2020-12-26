@@ -1,7 +1,9 @@
-// 스와이프
-const arry = ["첫번쨰", "두번째", "세번쨰", "4번쨰", "5번째", "6번쨰", "7번쨰"]
+'use strick'
+
+// swiper
+const secname = ["Accufly", "Technology", "GenieTalk Go!", "GenieBiz", "About", "Notice", "Footer"]
 const he_2 = window.innerHeight / 2;
-const mobileWidth = 600;
+const mobileWidth = 640;
 let mobilemode=false;
 let pre_index = 0;
 
@@ -14,7 +16,7 @@ const Option = {
         el: '.swiper-pagination',
         clickable: true,
         renderBullet: function (index, className) {
-            return `<span class="${className}"><p>${arry[index]}</p></span>`;
+            return `<span class="${className}"><p>${secname[index]}</p></span>`;
         },
     },
     speed: 1000,
@@ -38,12 +40,29 @@ const Option = {
         hide : true,
     },
 };
+const sec1Option = {
+    simulateTouch: false,
+    slidesPerView: 1,
+    loop: true,
+    // effect: 'slide',
+    speed : 1000,
+    breakpoints : {
+        1180 :{
+            slidesPerView: 5,
+        }
+    },
+    navigation: {
+        nextEl: '.sec1-btn-next',
+        prevEl: '.sec1-btn-prev',
+      },
+}
+
 
 
 const myswiper = new Swiper('.swiper-main',Option);
-const pag = document.querySelector(".swiper-pagination");
+const sec1swiper = new Swiper(".sec1_container",sec1Option);
 
-swiperDesktopOption();
+
 
 
 window.addEventListener("resize",()=>{
@@ -56,14 +75,25 @@ window.addEventListener("resize",()=>{
     }
 
 })
+window.addEventListener("load",()=>{
+    if (window.innerWidth > mobileWidth) {
+        swiperDesktopOption()
+        mobilemode = false;
+    } else {
+        swiperMobileOption()
+        mobilemode = true;
+    }
+})
 
 function swiperMobileOption(){
     myswiper.params.freeMode=true ;
-    pag.classList.add("swiper-pagination-hidden");
     myswiper.params.scrollbar.hide=true;
 }
+
+
 function swiperDesktopOption(){
     myswiper.params.freeMode=false ;
-    pag.classList.remove("swiper-pagination-hidden");
     myswiper.params.scrollbar.hide=false;
+    
+    sec1Option.effect='fade';    
 }
