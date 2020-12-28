@@ -1,10 +1,10 @@
-$nav-padding : 4rem;
+$nav-padding : 3rem;
 
 
 
 $sec0-color :#FF9A11;
 
-$screen-desktop : 1300px;
+$screen-desktop : 1180px;
 $screen-tablet : 640px;
 
 //모바일
@@ -142,8 +142,8 @@ nav {
         }
     }
 
-    .swiper-pagination {
-        width: 50px;
+    .main-pagination {
+        width: 25px;
         left: 10px;
         top: 50%;
         right: 0;
@@ -178,7 +178,7 @@ nav {
             }
             
         }
-        @include mobile(){
+        @include mobile_table(){
             display: none;
         }
     }
@@ -420,11 +420,335 @@ nav {
 }
 
 
+// sec2
+.sec2{
+    padding: 4rem;
+
+    .sec2_content{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 3rem;
+        .sec2_warp{
+            // 슬라이드 기본 패딩 들어가서 초기화
+            .swiper-slide{
+                padding: 0;
+            }
+
+            .sec2_silde0{
+                padding: 1rem;
+
+                .sec2_silde0_img{
+                    width: 160px;
+                    height: 180px;
+                }
+
+                h1,h2,p , .sec2_silde0_counts , .sec2_silde0_dsc{
+                    margin-top: 0.5rem;
+                }
+
+                .sec2_silde0_counts{
+                    display: flex;
+                    justify-content: space-between;
+                    height: 10rem;
+                    .sec2_silde0_count{
+                        width: 33%;               
+                        margin: 5px;
+                        border-radius: 20px;
+                        background-color: white;
+                        padding: 1.5rem 0.5rem 0.5rem 0.5rem;
+                        h2{
+                            display: inline-block;
+                        }
+                    }
+                }
+                .sec2_silde0_footer{
+                    margin-top: 1rem;
+                    font-size: 0.75rem;
+                    display: flex;
+                    justify-content: center;
+                    button{
+                        margin: 0 20px;
+                        color: $sec0-color;
+                    }
+                }
+            }
+            .sec2_silde1{
+                .sec2_silde1_bg {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 30%;
+                    left: 0;
+                    font-size: 12vw;
+                    text-align: center;
+                    color: white;
+                    z-index: 1;
+                }
+                .sec2_silde1_content {
+                    height: 100%;
+                    .sec2_silde1_imges {
+                        min-height: 400px;
+                        height: 70%;
+                        position: relative;
+                        z-index: 2;
+                        margin-top: 10px;
+                        img {
+                            width: 150px;
+                            height: 280px;
+                            position: absolute;                            
+                            &:nth-child(1){
+                                top: 0;
+                                left: 45%;  
+                                animation: deviceDown 2000ms infinite ;                             
+                            }
+                            &:nth-child(2){
+                                top: 25%;
+                                right: 45%;                          
+                                animation: deviceUp 2000ms infinite;     
+                            }
+                        }
+                    }
+                    .sec2_silde1_word {
+                        height: 40%;
+                        margin: 10px 0;
+                        position: relative;
+                        z-index: 2;
+                        h2{
+                            margin-top: 0.5rem;
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+                }
+            
+            .sec2_silde2{
+                padding: 2rem 4rem;
+                display: grid;
+                gap: 10px;
+                .sec2_silde2_product{
+                    background: url("../images/christmas-tree-5758765_1920.jpg") center/cover no-repeat;
+                    grid-area: sec2_product;
+                }
+                .sec2-silde2_func{
+                    width: 100%;
+                    height: 100%;
+                    @for $var from 1 to 10 {
+                        &:nth-child(#{$var}){
+                            grid-area: func#{$var};
+                        }
+                    } 
+                    img{
+                        width: 100%;
+                        height: 60%;
+                    }
+                }
+                @include mobile(){
+                    grid-template: 
+                    "func2 func3" 1fr
+                    "func4 func5" 1fr
+                    "func6 func7" 1fr
+                    "func8 func9" 1fr
+                    / 1fr 1fr;
+                }
+                @include tablet(){
+                    grid-template: 
+                    "func2 func3 func4 func5" 1fr
+                    "func6 func7 func8 func9" 1fr
+                    
+                    / 1fr 1fr 1fr 1fr;
+                }
+                @include desktop(){
+                    grid-template: 
+                    ". . . . . ." 10%
+                    "func2 func3 func4 func5 sec2_product sec2_product" 40%
+                    "func6 func7 func8 func9 sec2_product sec2_product" 40%
+                    ". . . . . ." 10%
+                    / 1fr 1fr 1fr 1fr 1fr 1fr;
+                }
+            }
+            .sec2_silde3{
+                padding: 4rem;
+                text-align: center;
+                p{
+                    margin: 2rem 0;
+                }
+                table{
+                    margin: auto;
+                    text-align: left;
+
+                    tr{
+                        td{
+                            font-size: 1rem;
+                            &:nth-child(1){
+                                font-weight: bold;
+                            }
+                            &:nth-child(2){
+                                padding-left: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            @include tablet(){
+                .sec2_silde0{
+                    .sec2_silde0_counts{
+                        justify-content: center;
+                        .sec2_silde0_count{
+                            width: 25%;
+                            min-width: 180px;
+                        }
+                    }
+                }
+            }
+            @include desktop(){
+                .sec2_silde0{
+                    padding: 0;
+                    display: flex;
+
+                    .sec2_silde0_img{
+                        flex:  0 0 50%;
+                        max-width: 50%;
+                        height: 100%;
+                    }
+                    .sec2_silde0_dsc{
+                        flex:  0 0 50%;
+                        max-width: 50%;
+                        padding: 6rem 4rem;
+                        text-align: center;
+
+                        .sec2_silde0_counts{
+                            height: 200px;
+                            .sec2_silde0_count{
+                                min-width: 130px;
+                            }
+                        }
+                    }
+                    h2{
+                        font-size: 0.9rem;
+                    }
+                    h3 {
+                        font-size: 0.6rem;
+                    }
+                    p{
+                        font-size: 0.6rem;
+                    }
+                }
+                .sec2_silde1{
+                    .sec2_silde1_content{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+    
+                        .sec2_silde1_imges{
+                            width: 50%;
+                            height: 100%;
+                            margin: 5rem 0;
+                        }
+                        .sec2_silde1_word{
+                            width: 50%;
+                            height: 100%;
+                            text-align: center;
+                            top: 35%;
+                            
+                        }
+                    }
+                }
+                
+            }
+        }
+        .sec2-pagination{
+            bottom: 2rem;
+            width: 100%;
+
+            .swiper-pagination-bullet{
+                margin-left: 10px;
+            }
+            .swiper-pagination-bullet-active{
+                background-color: $sec0-color;
+                transform: scale(1.5);
+            }
+        }
+    }
+
+    .sec2-next , .sec2-prev{
+        top: 200px;
+    }
+    
+    @include mobile_table(){
+        padding: 0;
+        text-align: center;
+    }
+    @include desktop(){
+        padding: 0 !important;
+        .sec2-next , .sec2-prev{
+            top: 50%;
+        }
+        .sec2-prev{
+            left: 50px;
+        }
+        .sec2-next{
+            right: 50px;
+        }
+    }
+
+}
+
 // footer
 .footer{
     @include mobile(){
         .box{
             font-size: 4rem;
         }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes deviceUp{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+@keyframes deviceDown{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0px);
     }
 }
